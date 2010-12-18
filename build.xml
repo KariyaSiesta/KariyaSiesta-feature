@@ -94,7 +94,7 @@
 				<include name="feature.xml"/>
 			</fileset>
 		</copy>
-		<eclipse.idReplacer featureFilePath="${feature.base}/features/com.github.kariyasiesta.KariyaSiesta_1.0.0.201012190004/feature.xml"  selfVersion="1.0.0.201012190004" featureIds="" pluginIds=""/>
+		<!--eclipse.idReplacer featureFilePath="${feature.base}/features/com.github.kariyasiesta.KariyaSiesta_1.0.0.201012190004/feature.xml"  selfVersion="1.0.0.201012190004" featureIds="" pluginIds=""/-->
 		<antcall target="rootFiles">
 			<param name="rootTarget" value="rootFiles${os}_${ws}_${arch}"/>
 		</antcall>
