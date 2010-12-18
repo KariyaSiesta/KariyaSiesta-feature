@@ -11,11 +11,11 @@
 	</target>
 
 	<target name="all.plugins" depends="init">
-		<ant antfile="build.xml" dir="../CheckerPlugin" target="${target}">
+		<!--ant antfile="build.xml" dir="../CheckerPlugin" target="${target}">
 			<property name="arch" value="x86_64"/>
 			<property name="ws" value="cocoa"/>
 			<property name="os" value="macosx"/>
-		</ant>
+		</ant-->
 	</target>
 	<target name="all.features" depends="init">
 	</target>
