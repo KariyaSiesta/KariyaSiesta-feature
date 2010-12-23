@@ -3,18 +3,19 @@
       id="com.github.kariyasiesta.KariyaSiesta"
       label="KariyaSiesta"
       version="1.0.0"
-      provider-name="KariyaSiesta">
+      provider-name="KariyaSiesta"
+      plugin="CheckerPlugin">
 
-   <description url="http://www.example.com/description">
-      [Enter Feature Description here.]
+   <description url="http://kariyasiesta.github.com/kariyasiesta/">
+      KariyaSiesta is a flexible coding style checker for C
    </description>
 
    <copyright url="http://www.example.com/copyright">
-      [Enter Copyright Description here.]
+      Copyright (C) 2010 RAISIN. All rights reserved.
    </copyright>
 
-   <license url="http://www.example.com/license">
-      [Enter License Description here.]
+   <license url="http://www.apache.org/licenses/">
+      Apache License, Version 2.0
    </license>
 
    <url>
