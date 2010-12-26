@@ -2,7 +2,7 @@
 <feature
       id="com.github.kariyasiesta.KariyaSiesta"
       label="KariyaSiesta"
-      version="1.0.0"
+      version="1.0.5"
       provider-name="KariyaSiesta"
       plugin="CheckerPlugin">
 
@@ -37,7 +37,7 @@
          id="CheckerPlugin"
          download-size="0"
          install-size="0"
-         version="1.0.0"
+         version="1.0.5"
          unpack="false"/>
 
 </feature>

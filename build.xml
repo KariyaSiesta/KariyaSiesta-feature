@@ -2,7 +2,7 @@
 <project name="com.github.kariyasiesta.KariyaSiesta" default="build.update.jar" basedir=".">
 
 	<property name="qualifier" value=""/>
-	<property name="bundleVersion" value="1.0.0"/>
+	<property name="bundleVersion" value="1.0.5"/>
 	
 	<target name="init">
 		<property name="feature.temp.folder" value="${basedir}/feature.temp.folder"/>
