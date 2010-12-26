@@ -2,6 +2,7 @@
 <project name="com.github.kariyasiesta.KariyaSiesta" default="build.update.jar" basedir=".">
 
 	<property name="qualifier" value=""/>
+	<property name="bundleVersion" value="1.0.0"/>
 	
 	<target name="init">
 		<property name="feature.temp.folder" value="${basedir}/feature.temp.folder"/>
@@ -56,7 +57,7 @@
 		<property name="feature.base" value="${feature.temp.folder}"/>
 		<delete dir="${feature.temp.folder}"/>
 		<mkdir dir="${feature.temp.folder}"/>
-		<mkdir dir="${feature.temp.folder}/features/com.github.kariyasiesta.KariyaSiesta_1.0.0${qualifier}"/>
+		<mkdir dir="${feature.temp.folder}/features/com.github.kariyasiesta.KariyaSiesta_${bundleVersion}${qualifier}"/>
 		<antcall target="gather.bin.parts" inheritAll="false">
 			<param name="os" value="*"/>
 			<param name="feature.base" value="${feature.temp.folder}"/>
@@ -65,38 +66,38 @@
 			<param name="arch" value="*"/>
 			<param name="nl" value="*"/>
 		</antcall>
-		<jar destfile="${feature.destination}/com.github.kariyasiesta.KariyaSiesta_1.0.0${qualifier}.jar" basedir="${feature.temp.folder}/features/com.github.kariyasiesta.KariyaSiesta_1.0.0${qualifier}"/>
+		<jar destfile="${feature.destination}/com.github.kariyasiesta.KariyaSiesta_${bundleVersion}${qualifier}.jar" basedir="${feature.temp.folder}/features/com.github.kariyasiesta.KariyaSiesta_${bundleVersion}${qualifier}"/>
 		<delete dir="${feature.temp.folder}"/>
 	</target>
 
 	<target name="publish.bin.parts" depends="init" if="p2.publish.parts">
-		<mkdir dir="${feature.temp.folder}/features/com.github.kariyasiesta.KariyaSiesta_1.0.0${qualifier}"/>
-		<copy todir="${feature.temp.folder}/features/com.github.kariyasiesta.KariyaSiesta_1.0.0${qualifier}" failonerror="true" overwrite="true">
+		<mkdir dir="${feature.temp.folder}/features/com.github.kariyasiesta.KariyaSiesta_${bundleVersion}${qualifier}"/>
+		<copy todir="${feature.temp.folder}/features/com.github.kariyasiesta.KariyaSiesta_${bundleVersion}${qualifier}" failonerror="true" overwrite="true">
 			<fileset dir="${basedir}">
 				<include name="feature.xml"/>
 			</fileset>
 		</copy>
-		<eclipse.idReplacer featureFilePath="${feature.temp.folder}/features/com.github.kariyasiesta.KariyaSiesta_1.0.0${qualifier}/feature.xml"  selfVersion="1.0.0${qualifier}" featureIds="" pluginIds=""/>
+		<eclipse.idReplacer featureFilePath="${feature.temp.folder}/features/com.github.kariyasiesta.KariyaSiesta_${bundleVersion}${qualifier}/feature.xml"  selfVersion="${bundleVersion}${qualifier}" featureIds="" pluginIds=""/>
 		<eclipse.gatherFeature 
 		   metadataRepository="${p2.build.repo}"
 		   artifactRepository="${p2.build.repo}"
-		   buildResultFolder="${feature.temp.folder}/features/com.github.kariyasiesta.KariyaSiesta_1.0.0${qualifier}"
+		   buildResultFolder="${feature.temp.folder}/features/com.github.kariyasiesta.KariyaSiesta_${bundleVersion}${qualifier}"
 		   baseDirectory="${basedir}"
 		/>
 	</target>
 
 	<target name="gather.bin.parts" depends="init" if="feature.base">
-		<mkdir dir="${feature.base}/features/com.github.kariyasiesta.KariyaSiesta_1.0.0${qualifier}"/>
+		<mkdir dir="${feature.base}/features/com.github.kariyasiesta.KariyaSiesta_${bundleVersion}${qualifier}"/>
 		<antcall target="children">
 			<param name="target" value="gather.bin.parts"/>
 			<param name="destination.temp.folder" value="${feature.base}/plugins"/>
 		</antcall>
-		<copy todir="${feature.base}/features/com.github.kariyasiesta.KariyaSiesta_1.0.0${qualifier}" failonerror="true" overwrite="false">
+		<copy todir="${feature.base}/features/com.github.kariyasiesta.KariyaSiesta_${bundleVersion}${qualifier}" failonerror="true" overwrite="false">
 			<fileset dir="${basedir}">
 				<include name="feature.xml"/>
 			</fileset>
 		</copy>
-		<!--eclipse.idReplacer featureFilePath="${feature.base}/features/com.github.kariyasiesta.KariyaSiesta_1.0.0${qualifier}/feature.xml"  selfVersion="1.0.0${qualifier}" featureIds="" pluginIds=""/-->
+		<!--eclipse.idReplacer featureFilePath="${feature.base}/features/com.github.kariyasiesta.KariyaSiesta_${bundleVersion}${qualifier}/feature.xml"  selfVersion="${bundleVersion}${qualifier}" featureIds="" pluginIds=""/-->
 		<antcall target="rootFiles">
 			<param name="rootTarget" value="rootFiles${os}_${ws}_${arch}"/>
 		</antcall>
@@ -122,7 +123,7 @@
 			<param name="nl" value="*"/>
 			<param name="include.children" value="true"/>
 		</antcall>
-		<zip destfile="${feature.destination}/com.github.kariyasiesta.KariyaSiesta_1.0.0${qualifier}.bin.dist.zip" basedir="${feature.temp.folder}" filesonly="false" whenempty="skip" update="false"/>
+		<zip destfile="${feature.destination}/com.github.kariyasiesta.KariyaSiesta_${bundleVersion}${qualifier}.bin.dist.zip" basedir="${feature.temp.folder}" filesonly="false" whenempty="skip" update="false"/>
 		<delete dir="${feature.temp.folder}"/>
 	</target>
 
@@ -131,10 +132,10 @@
 		<mkdir dir="${feature.temp.folder}"/>
 		<antcall target="all.children">
 			<param name="target" value="gather.sources"/>
-			<param name="destination.temp.folder" value="${feature.temp.folder}/plugins/com.github.kariyasiesta.KariyaSiesta.source_1.0.0${qualifier}/src"/>
+			<param name="destination.temp.folder" value="${feature.temp.folder}/plugins/com.github.kariyasiesta.KariyaSiesta.source_${bundleVersion}${qualifier}/src"/>
 			<param name="include.children" value="true"/>
 		</antcall>
-		<zip destfile="${feature.destination}/com.github.kariyasiesta.KariyaSiesta_1.0.0${qualifier}.src.zip" basedir="${feature.temp.folder}" filesonly="true" whenempty="skip" update="false"/>
+		<zip destfile="${feature.destination}/com.github.kariyasiesta.KariyaSiesta_${bundleVersion}${qualifier}.src.zip" basedir="${feature.temp.folder}" filesonly="true" whenempty="skip" update="false"/>
 		<delete dir="${feature.temp.folder}"/>
 	</target>
 
@@ -150,15 +151,15 @@
 			<param name="include.children" value="true"/>
 			<param name="${logExtension.param}" value="${logExtension}"/>
 		</antcall>
-		<zip destfile="${feature.destination}/com.github.kariyasiesta.KariyaSiesta_1.0.0${qualifier}.log.zip" basedir="${feature.temp.folder}" filesonly="true" whenempty="skip" update="false"/>
+		<zip destfile="${feature.destination}/com.github.kariyasiesta.KariyaSiesta_${bundleVersion}${qualifier}.log.zip" basedir="${feature.temp.folder}" filesonly="true" whenempty="skip" update="false"/>
 		<delete dir="${feature.temp.folder}"/>
 	</target>
 
 	<target name="clean" depends="init" description="Clean the feature: com.github.kariyasiesta.KariyaSiesta of all the zips, jars and logs created.">
-		<delete file="${feature.destination}/com.github.kariyasiesta.KariyaSiesta_1.0.0${qualifier}.jar"/>
-		<delete file="${feature.destination}/com.github.kariyasiesta.KariyaSiesta_1.0.0${qualifier}.bin.dist.zip"/>
-		<delete file="${feature.destination}/com.github.kariyasiesta.KariyaSiesta_1.0.0${qualifier}.log.zip"/>
-		<delete file="${feature.destination}/com.github.kariyasiesta.KariyaSiesta_1.0.0${qualifier}.src.zip"/>
+		<delete file="${feature.destination}/com.github.kariyasiesta.KariyaSiesta_${bundleVersion}${qualifier}.jar"/>
+		<delete file="${feature.destination}/com.github.kariyasiesta.KariyaSiesta_${bundleVersion}${qualifier}.bin.dist.zip"/>
+		<delete file="${feature.destination}/com.github.kariyasiesta.KariyaSiesta_${bundleVersion}${qualifier}.log.zip"/>
+		<delete file="${feature.destination}/com.github.kariyasiesta.KariyaSiesta_${bundleVersion}${qualifier}.src.zip"/>
 		<delete dir="${feature.temp.folder}"/>
 		<antcall target="all.children">
 			<param name="target" value="clean"/>
@@ -175,7 +176,7 @@
 	<target name="gather.sources">
 		<antcall target="children">
 			<param name="target" value="gather.sources"/>
-			<param name="destination.temp.folder" value="${feature.temp.folder}/plugins/com.github.kariyasiesta.KariyaSiesta.source_1.0.0${qualifier}/src"/>
+			<param name="destination.temp.folder" value="${feature.temp.folder}/plugins/com.github.kariyasiesta.KariyaSiesta.source_${bundleVersion}${qualifier}/src"/>
 		</antcall>
 	</target>
 
